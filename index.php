@@ -22,6 +22,9 @@
 
 require_once('../../config.php');
 require_once($CFG->dirroot. '/local/greetings/lib.php');
+
+
+
 $context = context_system::instance();
 $PAGE->set_context($context);
 
@@ -34,7 +37,8 @@ $PAGE->set_pagelayout('standard');
 // Folowing lines have to be set before the $OUTPUT->header()
 $PAGE->set_title($SITE->fullname);
 $PAGE->set_heading(get_string('pluginname', 'local_greetings'));
-
+// Instantiate the myform form from within the plugin.
+$mform = new \local_greetings\form\myform();
 echo $OUTPUT->header();
 if (isloggedin()) {
     echo local_greetings_get_greeting($USER);
@@ -43,5 +47,24 @@ if (isloggedin()) {
 }
 
 
+
+// Form processing and displaying is done here.
+if ($mform->is_cancelled()) {
+    // If there is a cancel element on the form, and it was pressed,
+    // then the `is_cancelled()` function will return true.
+    // You can handle the cancel operation here.
+} else if ($fromform = $mform->get_data()) {
+    // When the form is submitted, and the data is successfully validated,
+    // the `get_data()` function will return the data posted in the form.
+} else {
+    // This branch is executed if the form is submitted but the data doesn't
+    // validate and the form should be redisplayed or on the first display of the form.
+   
+    // Set default data (if any).
+    $mform->set_data($toform);
+   
+    // Display the form.
+    $mform->display();
+}
 
 echo $OUTPUT->footer();
