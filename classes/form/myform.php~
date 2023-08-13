@@ -18,6 +18,8 @@ class myform extends \moodleform {
         $mform->setType('email', PARAM_NOTAGS);
         // Default value.
         $mform->setDefault('email', 'Please enter email');
+        $mform->addElement('textarea', 'message', get_string('yourmessage', 'local_greetings')); // Add elements to your form.
+        $mform->setType('message', PARAM_TEXT); // Set type of element.
         $submitlabel = get_string('submit');
         $mform->addElement('submit', 'submitmessage', $submitlabel);
     }
