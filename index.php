@@ -30,7 +30,6 @@ $PAGE->set_context($context);
 
 $PAGE->set_url(new moodle_url('/local/greetings/index.php'));
 
-$PAGE->set_url(new moodle_url('/local/greetings/index.php'));
 
 $PAGE->set_pagelayout('standard');
 
@@ -50,9 +49,11 @@ $messageform = new \local_greetings\form\message_form();
 $action = optional_param('action', '', PARAM_TEXT);
 
 if ($action == 'del') {
+	 require_sesskey();
     $id = required_param('id', PARAM_TEXT);
 if ($deleteanypost) {
     $DB->delete_records('local_greetings_messages', array('id' => $id));
+    redirect($PAGE->url);
     }
 }
 if ($data = $messageform->get_data()) {
@@ -113,7 +114,7 @@ foreach ($messages as $m) {
             echo html_writer::link(
                 new moodle_url(
                     '/local/greetings/index.php',
-                    array('action' => 'del', 'id' => $m->id)
+                    array('action' => 'del', 'id' => $m->id,'sesskey'=>sesskey())
                 ),
                 $OUTPUT->pix_icon('t/delete', '') . get_string('delete')
             );
