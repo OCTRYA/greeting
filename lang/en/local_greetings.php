@@ -34,4 +34,6 @@ $string['greetinguserfj'] = 'Bula, {$a}.';
 $string['greetingusernz'] = 'Kia Ora, {$a}.';
 $string['greetinguserbe'] = 'Hallo, {$a}.';
 $string['yourmessage'] = 'simply the best';
-
+$string['postedby'] = 'Posted by {$a}.';
+$string['greetings:viewmessages'] = 'View messages on the Greetings wall';
+$string['greetings:postmessages'] = 'Post a new message on the Greetings wall';
