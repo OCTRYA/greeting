@@ -37,3 +37,5 @@ $string['yourmessage'] = 'simply the best';
 $string['postedby'] = 'Posted by {$a}.';
 $string['greetings:viewmessages'] = 'View messages on the Greetings wall';
 $string['greetings:postmessages'] = 'Post a new message on the Greetings wall';
+$string['messagecardbgcolor'] = 'Message card color';
+$string['messagecardbgcolordesc'] = 'Background color of the message card';
